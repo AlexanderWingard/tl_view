@@ -7,8 +7,13 @@ import static org.junit.Assert.*;
 
 public class ParserTest {
     @Test public void testSomeLibraryMethod() {
-        Parser classUnderTest = new Parser();
-        InputStream test_input = this.getClass().getClassLoader().getResourceAsStream("test.csv");
-        assertEquals(2, classUnderTest.numberOfLines(test_input));
+        Parser parser = new Parser();
+        InputStream test_input = getStreamFromResourceFile("test.csv");
+
+        assertEquals(2, parser.numberOfLines(test_input));
+    }
+
+    private InputStream getStreamFromResourceFile(String name) {
+        return this.getClass().getClassLoader().getResourceAsStream(name);
     }
 }
